@@ -1,0 +1,202 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": "3",
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "<h1>Welcome to Michael's Dashboard</hi>",
+						"size": "regular",
+						"animate": true
+					}
+				}
+			]
+		},
+		{
+			"title": "IoT",
+			"width": 1,
+			"row": {
+				"3": 5,
+				"5": 5
+			},
+			"col": {
+				"3": 1,
+				"5": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "indicator",
+					"settings": {
+						"title": "Warning",
+						"value": "datasources[\"LOcal MQTT\"][\"msg\"][\"temperature\"] > 25 ? 1:0;",
+						"on_text": "Temperature > 25 ℃"
+					}
+				},
+				{
+					"type": "indicator",
+					"settings": {
+						"title": "Warning",
+						"value": "datasources[\"LOcal MQTT\"][\"msg\"][\"humidity\"]> 80 ? 1:0;",
+						"on_text": "",
+						"off_text": "Humidity > 80 %"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Temperature",
+						"size": "regular",
+						"value": "datasources[\"LOcal MQTT\"][\"msg\"][\"temperature\"]",
+						"sparkline": true,
+						"animate": true,
+						"units": "℃"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Humidity",
+						"size": "regular",
+						"value": "datasources[\"LOcal MQTT\"][\"msg\"][\"humidity\"]",
+						"sparkline": true,
+						"animate": true,
+						"units": "%"
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 5,
+				"5": 5
+			},
+			"col": {
+				"3": 3,
+				"5": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Clock",
+						"size": "regular",
+						"value": "datasources[\"Clock\"][\"time_string_value\"]",
+						"animate": true
+					}
+				}
+			]
+		},
+		{
+			"title": "Kepware",
+			"width": 1,
+			"row": {
+				"3": 5,
+				"5": 5
+			},
+			"col": {
+				"3": 2,
+				"5": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "indicator",
+					"settings": {
+						"title": "Running Status",
+						"value": "datasources[\"Kepware\"][\"msg\"][\"values\"][1][\"Channel1.Device1.Tag2\"]"
+					}
+				},
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "Ramp1",
+						"value": "datasources[\"Kepware\"][\"msg\"][\"values\"][2][\"Simulation Examples.Functions.Ramp1\"]",
+						"min_value": 0,
+						"max_value": 100
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Counter",
+						"size": "regular",
+						"value": "datasources[\"Kepware\"][\"msg\"][\"values\"][0][\"Channel1.Device1.Tag1\"]",
+						"animate": true,
+						"units": "pcs"
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 9
+			},
+			"col": {
+				"3": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "picture",
+					"settings": {
+						"src": "http://192.168.2.104/Pictures/image.jpg",
+						"refresh": 60
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "LOcal MQTT",
+			"type": "paho_mqtt",
+			"settings": {
+				"server": "192.168.2.104",
+				"port": 9001,
+				"use_ssl": false,
+				"client_id": "",
+				"username": "",
+				"password": "",
+				"topic": "dht22",
+				"json_data": true
+			}
+		},
+		{
+			"name": "Clock",
+			"type": "clock",
+			"settings": {
+				"refresh": 1
+			}
+		},
+		{
+			"name": "Kepware",
+			"type": "paho_mqtt",
+			"settings": {
+				"server": "192.168.2.104",
+				"port": 9001,
+				"use_ssl": false,
+				"client_id": "",
+				"username": "",
+				"password": "",
+				"topic": "kepware",
+				"json_data": true
+			}
+		}
+	],
+	"columns": 3
+}
