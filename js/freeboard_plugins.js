@@ -535,6 +535,7 @@ function FreeboardModel(datasourcePlugins, widgetPlugins, freeboardUI)
 	}
 
 	this.saveDashboardClicked = function(){
+		var event = arguments[1];
 		var target = $(event.currentTarget);
 		var siblingsShown = target.data('siblings-shown') || false;
 		if(!siblingsShown){

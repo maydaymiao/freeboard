@@ -6,12 +6,14 @@
 		{
 			"width": 1,
 			"row": {
-				"3": 1
+				"3": 1,
+				"4": 1
 			},
 			"col": {
-				"3": 1
+				"3": 1,
+				"4": 1
 			},
-			"col_width": "3",
+			"col_width": "4",
 			"widgets": [
 				{
 					"type": "text_widget",
@@ -24,15 +26,19 @@
 			]
 		},
 		{
-			"title": "IoT",
+			"title": "IoT Env",
 			"width": 1,
 			"row": {
 				"3": 5,
-				"5": 5
+				"4": 5,
+				"5": 5,
+				"6": 5
 			},
 			"col": {
 				"3": 1,
-				"5": 1
+				"4": 1,
+				"5": 1,
+				"6": 1
 			},
 			"col_width": 1,
 			"widgets": [
@@ -40,16 +46,17 @@
 					"type": "indicator",
 					"settings": {
 						"title": "Warning",
-						"value": "datasources[\"LOcal MQTT\"][\"msg\"][\"temperature\"] > 25 ? 1:0;",
-						"on_text": "Temperature > 25 ℃"
+						"value": "datasources[\"Environment\"][\"msg\"][\"temperature\"] > 25?1:0",
+						"on_text": "Temperature > 25 ℃",
+						"off_text": "Temperature > 25 ℃"
 					}
 				},
 				{
 					"type": "indicator",
 					"settings": {
 						"title": "Warning",
-						"value": "datasources[\"LOcal MQTT\"][\"msg\"][\"humidity\"]> 80 ? 1:0;",
-						"on_text": "",
+						"value": "datasources[\"Environment\"][\"msg\"][\"humidity\"] > 80 ? 1 : 0",
+						"on_text": "Humidity > 80 %",
 						"off_text": "Humidity > 80 %"
 					}
 				},
@@ -58,7 +65,7 @@
 					"settings": {
 						"title": "Temperature",
 						"size": "regular",
-						"value": "datasources[\"LOcal MQTT\"][\"msg\"][\"temperature\"]",
+						"value": "datasources[\"Environment\"][\"msg\"][\"temperature\"]",
 						"sparkline": true,
 						"animate": true,
 						"units": "℃"
@@ -69,7 +76,7 @@
 					"settings": {
 						"title": "Humidity",
 						"size": "regular",
-						"value": "datasources[\"LOcal MQTT\"][\"msg\"][\"humidity\"]",
+						"value": "datasources[\"Environment\"][\"msg\"][\"humidity\"]",
 						"sparkline": true,
 						"animate": true,
 						"units": "%"
@@ -78,21 +85,26 @@
 			]
 		},
 		{
+			"title": "Clock",
 			"width": 1,
 			"row": {
 				"3": 5,
-				"5": 5
+				"4": 9,
+				"5": 5,
+				"6": 5
 			},
 			"col": {
 				"3": 3,
-				"5": 3
+				"4": 4,
+				"5": 3,
+				"6": 3
 			},
 			"col_width": 1,
 			"widgets": [
 				{
 					"type": "text_widget",
 					"settings": {
-						"title": "Clock",
+						"title": "",
 						"size": "regular",
 						"value": "datasources[\"Clock\"][\"time_string_value\"]",
 						"animate": true
@@ -101,15 +113,19 @@
 			]
 		},
 		{
-			"title": "Kepware",
+			"title": "OPC Server",
 			"width": 1,
 			"row": {
 				"3": 5,
-				"5": 5
+				"4": 9,
+				"5": 5,
+				"6": 5
 			},
 			"col": {
 				"3": 2,
-				"5": 2
+				"4": 3,
+				"5": 2,
+				"6": 2
 			},
 			"col_width": 1,
 			"widgets": [
@@ -117,7 +133,18 @@
 					"type": "indicator",
 					"settings": {
 						"title": "Running Status",
-						"value": "datasources[\"Kepware\"][\"msg\"][\"values\"][1][\"Channel1.Device1.Tag2\"]"
+						"value": "datasources[\"Kepware\"][\"msg\"][\"values\"][1][\"Channel1.Device1.Tag2\"]",
+						"on_text": "On",
+						"off_text": "Off"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Message",
+						"size": "regular",
+						"value": "datasources[\"Kepware\"][\"msg\"][\"values\"][3][\"Simulation Examples.Functions.User1\"]",
+						"animate": true
 					}
 				},
 				{
@@ -142,20 +169,170 @@
 			]
 		},
 		{
+			"title": "IOT Air Quality",
 			"width": 1,
 			"row": {
-				"3": 9
+				"4": 5,
+				"6": 5
 			},
 			"col": {
-				"3": 3
+				"4": 2,
+				"6": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "indicator",
+					"settings": {
+						"title": "Warning",
+						"value": "datasources[\"Air Quality\"][\"msg\"][\"PM_25AQI\"] > 50 ? 1 : 0",
+						"on_text": "PM2.5 > 50 ug/m3",
+						"off_text": "PM2.5 > 50 ug/m3"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "PM1.0",
+						"size": "regular",
+						"value": "datasources[\"Air Quality\"][\"msg\"][\"PM10_Metal\"]",
+						"sparkline": false,
+						"animate": true,
+						"units": "ug/m3"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "PM2.5",
+						"size": "regular",
+						"value": "datasources[\"Air Quality\"][\"msg\"][\"PM_25AQI\"]",
+						"animate": true,
+						"units": "ug/m3"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "PM10",
+						"size": "regular",
+						"value": "datasources[\"Air Quality\"][\"msg\"][\"PM100_Metal\"]",
+						"sparkline": false,
+						"animate": true,
+						"units": "ug/m3"
+					}
+				},
+				{
+					"type": "sparkline",
+					"settings": {
+						"value": [
+							"datasources[\"Air Quality\"][\"msg\"][\"PM10_Metal\"]",
+							"datasources[\"Air Quality\"][\"msg\"][\"PM_25AQI\"]",
+							"datasources[\"Air Quality\"][\"msg\"][\"PM100_Metal\"]"
+						],
+						"include_legend": true,
+						"legend": "PM1.0, PM2.5, PM10"
+					}
+				},
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "HCHO 甲醛",
+						"value": "datasources[\"Air Quality\"][\"msg\"][\"HCHO\"]",
+						"units": "mg/m3",
+						"min_value": 0,
+						"max_value": "0.1"
+					}
+				}
+			]
+		},
+		{
+			"title": "IoT Engineering",
+			"width": 1,
+			"row": {
+				"4": 5,
+				"6": 5
+			},
+			"col": {
+				"4": 3,
+				"6": 3
+			},
+			"col_width": "1",
+			"widgets": [
+				{
+					"type": "indicator",
+					"settings": {
+						"value": "datasources[\"IoT Button\"][\"msg\"] == 1? 1:0",
+						"on_text": "PSAM01设备异常，请检修",
+						"off_text": "PSAM01设备运行正常"
+					}
+				}
+			]
+		},
+		{
+			"title": "Camera",
+			"width": 1,
+			"row": {
+				"3": 9,
+				"4": 13,
+				"5": 9,
+				"6": 9
+			},
+			"col": {
+				"3": 3,
+				"4": 4,
+				"5": 3,
+				"6": 3
 			},
 			"col_width": 1,
 			"widgets": [
 				{
 					"type": "picture",
 					"settings": {
-						"src": "http://192.168.2.104/Pictures/image.jpg",
+						"src": "https://henkelapacsblob.blob.core.windows.net/picture/image",
 						"refresh": 60
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"4": 19,
+				"6": 19
+			},
+			"col": {
+				"4": 1,
+				"6": 1
+			},
+			"col_width": "1",
+			"widgets": [
+				{
+					"type": "picture",
+					"settings": {
+						"src": "https://40uu5c99f3a2ja7s7miveqgqu-wpengine.netdna-ssl.com/wp-content/uploads/2015/11/Industrial-Internet-of-Things.gif",
+						"refresh": 99999
+					}
+				}
+			]
+		},
+		{
+			"title": "IOT Maintenance",
+			"width": 1,
+			"row": {
+				"4": 5
+			},
+			"col": {
+				"4": 4
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "indicator",
+					"settings": {
+						"value": "datasources[\"Maintenance Feedback\"][\"msg\"][\"state\"] == 1 ? 1:0",
+						"on_text": "datasources[\"Maintenance Feedback\"][\"msg\"][\"name\"]",
+						"off_text": "PSAM01设备未处在检修状态"
 					}
 				}
 			]
@@ -163,10 +340,17 @@
 	],
 	"datasources": [
 		{
-			"name": "LOcal MQTT",
+			"name": "Clock",
+			"type": "clock",
+			"settings": {
+				"refresh": 1
+			}
+		},
+		{
+			"name": "Environment",
 			"type": "paho_mqtt",
 			"settings": {
-				"server": "192.168.2.104",
+				"server": "52.187.173.24",
 				"port": 9001,
 				"use_ssl": false,
 				"client_id": "",
@@ -177,17 +361,10 @@
 			}
 		},
 		{
-			"name": "Clock",
-			"type": "clock",
-			"settings": {
-				"refresh": 1
-			}
-		},
-		{
 			"name": "Kepware",
 			"type": "paho_mqtt",
 			"settings": {
-				"server": "192.168.2.104",
+				"server": "52.187.173.24",
 				"port": 9001,
 				"use_ssl": false,
 				"client_id": "",
@@ -196,7 +373,50 @@
 				"topic": "kepware",
 				"json_data": true
 			}
+		},
+		{
+			"name": "Air Quality",
+			"type": "paho_mqtt",
+			"settings": {
+				"server": "52.187.173.24",
+				"port": 9001,
+				"use_ssl": false,
+				"client_id": "",
+				"username": "",
+				"password": "",
+				"topic": "airquality",
+				"json_data": true
+			}
+		},
+		{
+			"name": "IoT Button",
+			"type": "paho_mqtt",
+			"settings": {
+				"server": "52.187.173.24",
+				"port": 9001,
+				"use_ssl": false,
+				"client_id": "",
+				"username": "",
+				"password": "",
+				"topic": "dragon/901/psa/eng",
+				"json_data": false,
+				"name": "IoT Button"
+			}
+		},
+		{
+			"name": "Maintenance Feedback",
+			"type": "paho_mqtt",
+			"settings": {
+				"server": "52.187.173.24",
+				"port": 9001,
+				"use_ssl": false,
+				"client_id": "",
+				"username": "",
+				"password": "",
+				"topic": "maintenance",
+				"json_data": true
+			}
 		}
 	],
-	"columns": 3
+	"columns": 4
 }

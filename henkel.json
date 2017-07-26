@@ -1,0 +1,255 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"title": "Acc",
+			"width": 1,
+			"row": {
+				"3": 1,
+				"4": 11
+			},
+			"col": {
+				"3": 2,
+				"4": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "x",
+						"size": "regular",
+						"value": "datasources[\"XDK\"][\"msg\"][\"acc (mG)\"][\"x\"]",
+						"sparkline": true,
+						"animate": true,
+						"units": "mG"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "y",
+						"size": "regular",
+						"value": "datasources[\"XDK\"][\"msg\"][\"acc (mG)\"][\"y\"]",
+						"sparkline": true,
+						"animate": true,
+						"units": "mG"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "z",
+						"size": "regular",
+						"value": "datasources[\"XDK\"][\"msg\"][\"acc (mG)\"][\"z\"]",
+						"sparkline": true,
+						"animate": true,
+						"units": "mG"
+					}
+				}
+			]
+		},
+		{
+			"title": "Light",
+			"width": 1,
+			"row": {
+				"3": 11,
+				"4": 1
+			},
+			"col": {
+				"3": 1,
+				"4": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "",
+						"value": "datasources[\"XDK\"][\"msg\"][\"light (mLux)\"]",
+						"units": "mLux",
+						"min_value": 0,
+						"max_value": "450000"
+					}
+				}
+			]
+		},
+		{
+			"title": "Gyo",
+			"width": 1,
+			"row": {
+				"3": 1,
+				"4": 11
+			},
+			"col": {
+				"3": 3,
+				"4": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "x",
+						"size": "regular",
+						"value": "datasources[\"XDK\"][\"msg\"][\"gyro (mdeg/s)\"][\"x\"]",
+						"sparkline": true,
+						"animate": true,
+						"units": "mdeg/s"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "y",
+						"size": "regular",
+						"value": "datasources[\"XDK\"][\"msg\"][\"gyro (mdeg/s)\"][\"y\"]",
+						"sparkline": true,
+						"animate": true,
+						"units": "mdeg/s"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "z",
+						"size": "regular",
+						"value": "datasources[\"XDK\"][\"msg\"][\"gyro (mdeg/s)\"][\"z\"]",
+						"sparkline": true,
+						"animate": true,
+						"units": "mdeg/s"
+					}
+				}
+			]
+		},
+		{
+			"title": "IoT Environment",
+			"width": 1,
+			"row": {
+				"3": 1,
+				"4": 9
+			},
+			"col": {
+				"3": 1,
+				"4": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "indicator",
+					"settings": {
+						"title": "Warning",
+						"value": "datasources[\"Env\"][\"msg\"][\"temperature\"] > 28 ? 1 : 0",
+						"on_text": "Temperature > 28°C, too hot",
+						"off_text": "Temperature Is Normal"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Temperature",
+						"size": "regular",
+						"value": "datasources[\"Env\"][\"msg\"][\"temperature\"]",
+						"sparkline": true,
+						"animate": true,
+						"units": "°C"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Humidity",
+						"size": "regular",
+						"value": "datasources[\"Env\"][\"msg\"][\"humidity\"]",
+						"sparkline": true,
+						"animate": true,
+						"units": "%"
+					}
+				},
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "Barometric Pressure",
+						"value": "datasources[\"Env\"][\"msg\"][\"pressure\"]",
+						"units": "Pascal",
+						"min_value": 0,
+						"max_value": "1200"
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"4": 1
+			},
+			"col": {
+				"4": 4
+			},
+			"col_width": "1",
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "<h3>Henkel Dashboard</hi>",
+						"size": "regular",
+						"animate": true
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"4": 1
+			},
+			"col": {
+				"4": 2
+			},
+			"col_width": "2",
+			"widgets": [
+				{
+					"type": "picture",
+					"settings": {
+						"src": "https://owc.de/wp-content/uploads/2013/09/Henkel_Dragon_Plant_Produktionslinie_Hotmelt_2_324216_print_1772H_1772W.jpg",
+						"refresh": 9999999
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "XDK",
+			"type": "paho_mqtt",
+			"settings": {
+				"server": "52.187.173.24",
+				"port": 9001,
+				"use_ssl": false,
+				"client_id": "",
+				"username": "",
+				"password": "",
+				"topic": "XDK110/XDK/Data/Stream",
+				"json_data": true,
+				"name": "XDK"
+			}
+		},
+		{
+			"name": "Env",
+			"type": "paho_mqtt",
+			"settings": {
+				"server": "52.187.173.24",
+				"port": 9001,
+				"use_ssl": false,
+				"client_id": "",
+				"username": "",
+				"password": "",
+				"topic": "env",
+				"json_data": true
+			}
+		}
+	],
+	"columns": 4
+}
